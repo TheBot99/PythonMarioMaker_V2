@@ -1,12 +1,35 @@
 import numpy
+import ArrayReconstruct
+import MakeArrayALevel
+import LevelWriter
+import os
 
-LevelName = "Level1"
-Level =  __import__(LevelName)
 
-LevelData = Level.LevelData
+LevelName = input("Level Name: ")
+LevelDirectory = "Levels/" + LevelName
+PickingFile = True
 
-y = LevelData.shape[0]
-x = LevelData.shape[1]
-print(x,y)
+while PickingFile:
+    if os.path.exists(LevelDirectory+".npy"):
+        PickingFile = False
+    else:
+        if os.name == "nt":
+            os.system("cls")
+        else:
+            os.system("clear")
+        print("Level Not Found")
+        LevelName = input("Level Name: ")
+        LevelDirectory = "Levels/" + LevelName
+
+
+
+FromFileLoadedLevelArray = ArrayReconstruct.Reconstruct(LevelDirectory)
+LevelArray = MakeArrayALevel.MakeLevel(FromFileLoadedLevelArray)
+print(LevelArray)
+DeconstructedArray = LevelWriter.DeconstructArray(FromFileLoadedLevelArray)
+LevelWriter.WriteLevelToFile(LevelDirectory, DeconstructedArray)
+
+
+
 
 
