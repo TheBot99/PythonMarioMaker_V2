@@ -54,3 +54,10 @@ def CalculatePercentage(ConversionNumber, TotalBlocks):
     Percentage = Percentage * 100
     Percentage = math.floor(Percentage)
     PercentageLoader(Percentage, PercentageBefore)
+
+def ChangePoints(X, Y, LevelArray, NewValue):
+    global Sprites
+    LevelArray[Y][X] = Sprites[NewValue]
+    print("Point Changed to " + LevelArray[Y][X] + "")
+
+    

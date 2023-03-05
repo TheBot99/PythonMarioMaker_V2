@@ -4,8 +4,7 @@ import os
 import time
 from Constants import *
 
-ConversionNumber = 0
-Percentage = 0
+
 
 
 
@@ -36,7 +35,7 @@ def Reconstruct(PassThroughLevelName):
             print("Reconstruction Complete")
         
     def CalculatePercentage(ConversionNumber, TotalBlocks):
-        global Percentage
+        Percentage = 0
         PercentageBefore = Percentage
         Percentage = ConversionNumber / TotalBlocks
         Percentage = Percentage * 100
@@ -44,7 +43,8 @@ def Reconstruct(PassThroughLevelName):
         PercentageLoader(Percentage, PercentageBefore)
 
     def ReconstructArray():
-        global ConversionNumber
+        ConversionNumber = 0
+
         global LevelData
         global y
         global x
@@ -68,16 +68,6 @@ def Reconstruct(PassThroughLevelName):
     global ConversionNumber
     global Percentage
 
-    del ConversionNumber
-    del LevelData
-    del y
-    del x
-    del LevelName
-    del Sprites
-    del BlockArray
-    del CalculatePercentage
-    del PercentageLoader
-    del Percentage
-    del ReconstructArray
+    
 
     return BlockLevelArray
