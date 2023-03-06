@@ -6,11 +6,10 @@ Percentage = 0
 PercentageBefore = 0
 
 
-
 def WriteBackUp():
     Level = __import__("Level1")
     LevelData = Level.LevelData
-    numpy.save('Level1.npy', LevelData)
+    numpy.save('Levels/Level1.npy', LevelData)
 
 def WriteLevelToFile(LevelName, Level):
     numpy.save(LevelName + '.npy', Level)
@@ -32,7 +31,6 @@ def DeconstructArray(ConstructedArray):
     DeconstructedArray = DeconstructedArray.reshape(ConstructedArray.shape[0], ConstructedArray.shape[1])
     return DeconstructedArray
 
-
 def PercentageLoader(Percentage, PercentageBefore):
     if Percentage != 100:
         if Percentage != PercentageBefore:  
@@ -45,7 +43,6 @@ def PercentageLoader(Percentage, PercentageBefore):
             os.system("clear")
         print("Deconstructing: " + str(Percentage) + "%")
         print("Deconstruction Complete")
-
 
 def CalculatePercentage(ConversionNumber, TotalBlocks):
     global Percentage
@@ -60,4 +57,10 @@ def ChangePoints(X, Y, LevelArray, NewValue):
     LevelArray[Y][X] = Sprites[NewValue]
     print("Point Changed to " + LevelArray[Y][X] + "")
 
+def MultiChangePoints(X1, Y1, X2, Y2, LevelArray, NewValue):
+    global Sprites
+    for i in range(Y1, Y2):
+        for j in range(X1, X2):
+            LevelArray[i][j] = Sprites[NewValue]
+            print("Point" + str(j) + ", " + str(i) + " Changed to " + LevelArray[i][j] + "")
     
