@@ -1,0 +1,1 @@
+pyinstaller --noconfirm --onedir --name "Mario Maker" --add-data "D:/PythonMarioMaker_V2/Levels;Levels/" --add-data "D:/PythonMarioMaker_V2/BlockPics;BlockPics/"  "D:/PythonMarioMaker_V2/main.py"

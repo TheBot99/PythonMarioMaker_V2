@@ -24,15 +24,14 @@ def Reconstruct(PassThroughLevelName):
             
         if Percentage != 100:
             if Percentage != PercentageBefore:  
-                print("Reconstructing: " + str(Percentage) + "%")
+                return "Reconstructing: " + str(Percentage) + "%"
                 
         else:
             if os.name == "nt":
                 os.system("cls")
             else:
                 os.system("clear")
-            print("Reconstructing: " + str(Percentage) + "%")
-            print("Reconstruction Complete")
+            return "Reconstructing: " + str(Percentage) + "%"
         
     def CalculatePercentage(ConversionNumber, TotalBlocks):
         Percentage = 0
@@ -40,7 +39,8 @@ def Reconstruct(PassThroughLevelName):
         Percentage = ConversionNumber / TotalBlocks
         Percentage = Percentage * 100
         Percentage = math.floor(Percentage)
-        PercentageLoader(Percentage, PercentageBefore)
+        FinalPercent = PercentageLoader(Percentage, PercentageBefore)
+        return FinalPercent
 
     def ReconstructArray():
         ConversionNumber = 0
@@ -57,7 +57,9 @@ def Reconstruct(PassThroughLevelName):
             for j in range(x):
                 BlockArray = numpy.append(BlockArray, Sprites[LevelData[i][j]])
                 ConversionNumber = ConversionNumber + 1
-                CalculatePercentage(ConversionNumber, y * x)
+                Percentage = CalculatePercentage(ConversionNumber, y * x)
+                print (Percentage)
+                
                 
         return numpy.reshape(BlockArray, (y, x))
 
@@ -65,9 +67,8 @@ def Reconstruct(PassThroughLevelName):
 
     global BlockArray
     global Sprites
-    global ConversionNumber
-    global Percentage
+
 
     
 
-    return BlockLevelArray
+    return BlockLevelArray , x , y

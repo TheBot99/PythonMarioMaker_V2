@@ -2,6 +2,8 @@ import numpy
 from Constants import Sprites
 import math
 import os
+import time
+
 Percentage = 0
 PercentageBefore = 0
 
@@ -63,4 +65,16 @@ def MultiChangePoints(X1, Y1, X2, Y2, LevelArray, NewValue):
         for j in range(X1, X2):
             LevelArray[i][j] = Sprites[NewValue]
             print("Point" + str(j) + ", " + str(i) + " Changed to " + LevelArray[i][j] + "")
+
+def CreateLevel(LevelName):
+    X = 16
+    Y = 9
+    global Sprites
+    LevelArray = numpy.array([])
+    for i in range(Y):
+        for j in range(X):
+            LevelArray = numpy.append(LevelArray, "w")
+    LevelArray = LevelArray.reshape(Y, X)
+    WriteLevelToFile(LevelName, LevelArray)
+    return "Level Created"
     
